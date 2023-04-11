@@ -1,5 +1,3 @@
-import Image from "next/image";
-import { Inter } from "next/font/google";
 import LandingView from "@/components/templates/LandingView";
 
 export default function Home() {
