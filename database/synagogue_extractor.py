@@ -10,13 +10,13 @@ with open(fn_in, "r") as infile, open(fn_out, 'w+') as outfile:
 
     # Write the header row
     header_row = next(csvreader)
-    col_count = len(header_row)
+    header_row.insert(4,"location_label")
     csvwriter.writerow(header_row)
 
     # Write all rows with location synagogue to output csv
     for row in csvreader:
         if 'synagogue' in row[4].lower():
-            row[4]="synagogue"
+            row.insert(4,"synagogue")
             csvwriter.writerow(row)
 
 print("finished")
