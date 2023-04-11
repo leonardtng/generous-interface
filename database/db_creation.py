@@ -1,4 +1,5 @@
 import sqlite3
+# Change to sql alchemy
 
 sql_cmd = ""
 db_name = "./dura.sqlite"
