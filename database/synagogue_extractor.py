@@ -12,6 +12,8 @@ with open(fn_in, "r") as infile, open(fn_out, 'w+') as outfile:
     header_row = next(csvreader)
     csvwriter.writerow(header_row)
 
+    # 
+
     # Write all rows with location synagogue to output csv
     for row in csvreader:
         if row[4].lower() == 'synagogue':
