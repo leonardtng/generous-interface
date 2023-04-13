@@ -12,7 +12,7 @@ cur = conn.cursor()
 
 # Make SQL command
 sql_cmd += '''
-CREATE TABLE IF NOT EXISTS objects (
+CREATE TABLE IF NOT EXISTS  (
     object_id INTEGER PRIMARY KEY,
     name VARCHAR NOT NULL,
     link VARCHAR NOT NULL,
