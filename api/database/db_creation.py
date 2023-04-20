@@ -12,27 +12,19 @@ cur = conn.cursor()
 
 # Make SQL command
 sql_cmd += '''
-CREATE TABLE IF NOT EXISTS  (
-    object_id INTEGER PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS objects (
+    id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
+    object_id INTEGER NOT NULL,
     name VARCHAR NOT NULL,
     link VARCHAR NOT NULL,
     image_link VARCHAR NOT NULL,
     location_label VARCHAR NOT NULL,
     location_name VARCHAR NOT NULL,
     type VARCHAR NOT NULL,
-    date VARCHAR NOT NULL,
-    creation_site VARCHAR NOT NULL,
-    details VARCHAR,
     accession VARCHAR,
-    photographer VARCHAR,
     negative_number VARCHAR,
-    repository VARCHAR,
-    photo_condition VARCHAR,
-    details2 VARCHAR,
     image_source VARCHAR,
-    image_type VARCHAR,
-    language VARCHAR,
-    error VARCHAR,
+    image_type VARCHAR
 );
 '''
 
