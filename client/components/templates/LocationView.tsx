@@ -37,7 +37,6 @@ const LocationView = () => {
   };
 
   const calculateSize = (count: number) => {
-    // You can adjust this calculation to change the size of the squares based on the count of items
     const baseSize = 100 + count * 10;
     const maxSize = winWidth && winWidth * 0.8;
 
