@@ -6,7 +6,7 @@ const LandingView = () => {
     () =>
       dynamic(() => import("@/components/organisms/DuraInteractive"), {
         loading: () => (
-          <div className="flex justify-center items-center border">
+          <div className="w-[800px] h-[500px] flex justify-center items-center border">
             <p className="text-lg">The map is loading...</p>
           </div>
         ),
