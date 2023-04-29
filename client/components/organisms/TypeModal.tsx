@@ -1,73 +1,83 @@
-import React, { useState } from "react";
-import Image from "next/image";
-import dynamic from "next/dynamic";
-import startCase from "lodash/startCase";
+import React, {
+  Dispatch,
+  MutableRefObject,
+  ReactEventHandler,
+  useRef,
+  useState,
+} from "react";
 import { LocationObject } from "@/types";
+import { ImageDisplay, ItemDisplay, Modal } from "@/components";
 
-const TypeModal = (props: any) => {
-  const Modal = dynamic(() => import("../molecules/Modal"), { ssr: false });
-  const ImageDisplay = dynamic(() => import("../molecules/ImageDisplay"), { ssr: false });
-  const ItemDisplay = dynamic(() => import("../molecules/ItemDisplay"), {
-    ssr: false,
-  });
+interface Props {
+  groupToDisplay: string | null;
+  setGroupToDisplay: Dispatch<React.SetStateAction<string | null>>;
+  data: LocationObject[] | undefined;
+  scrollPos: MutableRefObject<number>;
+  setScrollPos: (pos: number) => void;
+}
 
+const TypeModal = ({
+  data,
+  groupToDisplay,
+  setGroupToDisplay,
+  scrollPos,
+  setScrollPos,
+}: Props) => {
   const [itemToDisplay, setItemToDisplay] = useState<LocationObject | null>(
     null
   );
 
-  let data = props.data;
-  let groupToDisplay = props.groupToDisplay;
-  let setGroupToDisplay = props.setGroupToDisplay;
+  const modalOpen = useRef<boolean>(Boolean(groupToDisplay));
 
   const closeGroup = () => {
     setGroupToDisplay(null);
     setItemToDisplay(null);
+    modalOpen.current = false;
   };
 
   const updateScroll = () => {
     let scrollElt = document.getElementById("modalScroller");
-    props.setScrollPos(scrollElt ? scrollElt.scrollTop : 0);
+    setScrollPos(scrollElt ? scrollElt.scrollTop : 0);
   };
 
   const setScroll = () => {
     let scrollElt = document.getElementById("modalScroller");
     if (scrollElt) {
-      scrollElt.scrollTop = props.scrollPos.current;
+      scrollElt.scrollTop = scrollPos.current;
     }
-  }
+  };
 
   const changeItem = (item: LocationObject | null) => {
     setItemToDisplay(item);
   };
-  
+
   const closeItem = () => {
-    changeItem(null)
+    changeItem(null);
   };
 
   return (
-    <div>
-      <Modal
-        isOpen={Boolean(groupToDisplay)}
-        handleClose={closeGroup}
-        className="[&_.modalCloseButton]:top-5 [&_.modalCloseButton]:right-5 [&_.modalCloseButton]:fill-white"
-      >
-        <div className="flex flex-row items-center gap-20 h-[80vh] max-w-[80vw]">
-          <div className="h-[80vh] max-w-[80vw] bg-gray-700 p-5 rounded-xl overflow-hidden pt-20 flex flex-row gap-20">
-              <ImageDisplay
-                data={data}
-                changeItem={changeItem}
-                groupToDisplay={groupToDisplay}
-                updateScroll={updateScroll}
-                setScroll={setScroll}
-               />
-              <ItemDisplay
-                itemToDisplay={itemToDisplay}
-                closeItem={closeItem}
-              />
-          </div>
+    <Modal
+      isOpen={modalOpen.current}
+      handleClose={closeGroup}
+      className="[&_.modalCloseButton]:top-5 [&_.modalCloseButton]:right-5 [&_.modalCloseButton]:fill-white"
+    >
+      <div className="flex flex-row items-center gap-20 h-[80vh] max-w-[80vw]">
+        <div
+          className={`h-[80vh] max-w-[80vw] bg-gray-700 p-5 rounded-xl overflow-hidden pt-20 flex flex-row ${
+            itemToDisplay ? "gap-20" : ""
+          }`}
+        >
+          <ImageDisplay
+            data={data}
+            changeItem={changeItem}
+            groupToDisplay={groupToDisplay}
+            updateScroll={updateScroll}
+            setScroll={setScroll}
+          />
+          <ItemDisplay itemToDisplay={itemToDisplay} closeItem={closeItem} />
         </div>
-      </Modal>
-    </div>
+      </div>
+    </Modal>
   );
 };
 

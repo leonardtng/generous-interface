@@ -1,22 +1,23 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { ReactEventHandler } from "react";
 import Image from "next/image";
-import dynamic from "next/dynamic";
-import { useLocationObjects, useWindowSize } from "@/helpers";
-import { Location, LocationObject } from "@/types";
-import { useRouter } from "next/router";
-import { LOCATIONS } from "@/constants";
+import { LocationObject } from "@/types";
 import startCase from "lodash/startCase";
 
-type GroupedLocationObjects = {
-  [key: string]: LocationObject[];
-};
+interface Props {
+  data: LocationObject[] | undefined;
+  changeItem: (item: LocationObject | null) => void;
+  groupToDisplay: string | null;
+  setScroll: ReactEventHandler<HTMLDivElement>;
+  updateScroll: () => void;
+}
 
-const ImageDisplay = (props: any) => {
-  let data = props.data;
-  let changeItem = props.changeItem;
-  let groupToDisplay = props.groupToDisplay;
-  let setScroll = props.setScroll;
-  let updateScroll = props.updateScroll;
+const ImageDisplay = ({
+  data,
+  changeItem,
+  groupToDisplay,
+  setScroll,
+  updateScroll,
+}: Props) => {
   return (
     <div
       id="modalScroller"
@@ -45,7 +46,7 @@ const ImageDisplay = (props: any) => {
                   (e.target as Element).classList.remove("scale-125");
                 }}
                 onClick={(e) => {
-                    e.preventDefault();
+                  e.preventDefault();
                   changeItem(item);
                 }}
               />

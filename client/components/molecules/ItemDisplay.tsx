@@ -1,7 +1,12 @@
+import { LocationObject } from "@/types";
 import Image from "next/image";
 
-const ItemDisplay = (props: any) => {
-  let itemToDisplay = props.itemToDisplay;
+interface Props {
+  itemToDisplay: LocationObject | null;
+  closeItem: () => void;
+}
+
+const ItemDisplay = ({ itemToDisplay, closeItem }: Props) => {
   return (
     <div>
       {itemToDisplay && (
@@ -58,7 +63,7 @@ const ItemDisplay = (props: any) => {
               <div>
                 <button
                   type="button"
-                  onClick={props.closeItem}
+                  onClick={closeItem}
                   className="border-4 border-gray-400 bg-blue p-3 rounded-xl"
                   onMouseEnter={(e) => {
                     (e.target as Element).classList.remove("bg-blue");
