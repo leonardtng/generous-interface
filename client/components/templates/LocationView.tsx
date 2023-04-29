@@ -71,21 +71,31 @@ const LocationView = () => {
 
   return (
     <div className="w-[97%] min-h-screen flex flex-col justify-center items-center z-10 border-black">
-      {!isLoading && (
-        <div className="flex flex-col justify-center items-center mt-10 mb-10 bg-yellow-500/75 rounded-lg text-black border-black border-4">
-          <div className="text-6xl tracking-widest pt-5 px-5">
-            {
-              LOCATIONS.find(
-                (keyLocation: Location) => keyLocation.key === location
-              )?.name
-            }
+      <div className="flex flex-col justify-center items-center mt-10 mb-10 bg-yellow-500/75 rounded-lg text-black border-black border-4">
+        {isLoading ? (
+          <div className="px-5">
+            <div className="bg-slate-400 min-w-[600px] w-5/6 h-[80px] animate-pulse mt-5 rounded-xl" />
+            <div className="text-2xl mt-4 pb-5 px-5">
+              <p>Location Description Placeholder</p>
+            </div>
           </div>
-          <div className="text-2xl mt-4 pb-5 px-5">
-            <p>Location Description Placeholder</p>
-          </div>
-        </div>
-      )}
-      <div className="flex flex-wrap h-[75vh] items-center justify-center gap-3 bg-yellow-500/40 z-20 border-black border-4 overflow-scroll">
+        ) : (
+          <>
+            <div className="text-6xl tracking-widest pt-5 px-5">
+              {
+                LOCATIONS.find(
+                  (keyLocation: Location) => keyLocation.key === location
+                )?.name
+              }
+            </div>
+            <div className="text-2xl mt-4 pb-5 px-5">
+              <p>Location Description Placeholder</p>
+            </div>
+          </>
+        )}
+      </div>
+
+      <div className="flex flex-wrap h-[75vh] items-center justify-center gap-3 bg-yellow-500/40 z-20 border-black border-4 overflow-scroll w-full">
         {isLoading ? (
           <div className="w-full h-full flex flex-col justify-center items-center">
             Loading...
@@ -97,7 +107,7 @@ const LocationView = () => {
             return (
               <div
                 key={type}
-                className="relative p-2 group overflow-clip cursor-pointer my-5 border-4 border-black"
+                className="relative p-2 group overflow-clip cursor-pointer my-5 border-4 border-black w-full"
                 style={{
                   width: size,
                   height: size,
