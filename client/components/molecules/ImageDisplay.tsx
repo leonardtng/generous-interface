@@ -31,7 +31,7 @@ const ImageDisplay = ({
           ?.filter(
             (artObject: LocationObject) => artObject.type === groupToDisplay
           )
-          .map((item: any, index: any) => (
+          .map((item: LocationObject, index: number) => (
             <a key={index} href="">
               <Image
                 key={index}
