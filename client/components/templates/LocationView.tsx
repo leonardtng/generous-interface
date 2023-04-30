@@ -50,9 +50,28 @@ const LocationView = () => {
   const calculateSize = (count: number) => {
     const baseSize = 100 + count * 10;
     const maxSize = winWidth && winWidth * 0.8;
-
-    return maxSize && Math.min(baseSize, maxSize);
+    const maxImageSize = 400;
+    // origin: return maxSize && Math.min(baseSize, maxSize);
+    // v1: return maxSize ? Math.min(Math.min(baseSize, maxSize), maxImageSize) : baseSize;
+    if (!maxSize) {
+      // If maxSize is undefined, just return the base size capped at maxImageSize.
+      return Math.min(baseSize, maxImageSize);
+    }
+  
+    if (baseSize <= maxSize) {
+      // If the base size is smaller than or equal to maxSize,
+      // return the base size capped at maxImageSize.
+      return Math.min(baseSize, maxImageSize);
+    }
+  
+    // Calculate the scaling factor based on the ratio of maxSize to baseSize.
+    const scaleFactor = maxSize / baseSize;
+  
+    // Scale the base size by the scaling factor and return the result capped at maxImageSize.
+    return Math.min(baseSize * scaleFactor, maxImageSize);
   };
+
+  
 
   const getRandomObject = (items: LocationObject[]) => {
     const randomIndex = Math.floor(Math.random() * items.length);
