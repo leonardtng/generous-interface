@@ -2,15 +2,59 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, ensure that you have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed on your local machine.
+First, ensure that you have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed on your local machine. You should also have Python installed to run the backend.
 
-First, install the required dependencies:
+## Running the server locally
+
+1. Navigate to the server directory:
+
+```shell
+cd api
+```
+
+2. Create a Python virtual environment:
+
+```shell
+python3 -m venv venv
+```
+
+3. Activate the virtual environment:
+
+```shell
+source venv/bin/activate
+```
+
+4. Install all Python dependencies using `pip`:
+
+```shell
+pip install -r requirements.txt
+```
+
+5. Run the Flask server
+
+```shell
+python runserver.py
+```
+
+Open [http://127.0.0.1:8000](http://127.0.0.1:8000) with your browser. The server should be running there.
+
+## Running the client locally
+
+If you started by running the server, you will need to initialize a new terminal session in the root directory.
+
+1. Navigate to the client directory:
+
+```shell 
+cd client
+```
+
+2. Install the required dependencies:
 
 ```bash
 npm install
 ```
 
-Next, run the development server:
+3. Run the development server:
 
 ```bash
 npm run dev
@@ -27,8 +71,3 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
