@@ -1,5 +1,7 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+The server is written with Flask using Python.
+
 ## Getting Started
 
 First, ensure that you have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed on your local machine. You should also have Python installed to run the backend.
