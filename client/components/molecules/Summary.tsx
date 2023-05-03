@@ -19,7 +19,10 @@ const summaries: Map<string, string> = new Map([
     "Mithraeum",
     "The Mithraeum at Dura-Europos is uniquely located above ground and richly decorated with reliefs and frescoes.",
   ],
-  ["Christian Building", "N/A"],
+  [
+    "Christian Building",
+    "The Christian building is potentially the oldest surviving Christian house of worship and is notable for the brilliant paintings in its baptistery.",
+  ],
 ]);
 
 const Summary = ({ name }: Props) => {

@@ -196,7 +196,7 @@ const LocationView = () => {
               location_name ? "gap-5" : ""
             }`}
           >
-            <h1 className="text-4xl">{location_name}</h1>
+            <h1 className="text-4xl text-white">{location_name}</h1>
             <div className="overflow-y-scroll px-5 py-2 border-gray border-2 rounded">
               <DescriptionDiv location={location_name ? location_name : ""} />
             </div>
