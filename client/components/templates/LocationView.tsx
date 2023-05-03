@@ -118,7 +118,7 @@ const LocationView = () => {
   };
 
   return (
-    <div className="w-[97%] min-h-screen flex flex-col justify-center items-center z-10 border-black">
+    <div className="w-[97%] h-screen flex flex-col justify-center items-center z-10 border-black">
       <div className="flex flex-col justify-center items-center mt-10 mb-10 bg-yellow-500/75 rounded-lg text-black border-black border-4">
         {isLoading ? (
           <div className="px-5">
@@ -143,7 +143,7 @@ const LocationView = () => {
         )}
       </div>
 
-      <div className="flex flex-wrap h-[75vh] items-center justify-center gap-3 bg-yellow-500/40 z-20 border-black border-4 overflow-scroll w-[80%]">
+      <div className="flex flex-wrap flex-1 mb-6 items-center justify-center gap-3 bg-yellow-500/40 z-20 border-black border-4 overflow-scroll w-[80%]">
         {isLoading ? (
           <div className="w-full h-full flex flex-col justify-center items-center">
             Loading...

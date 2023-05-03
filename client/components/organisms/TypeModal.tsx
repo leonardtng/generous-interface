@@ -53,7 +53,7 @@ const TypeModal = ({
     <Modal
       isOpen={modalOpen.current}
       handleClose={closeGroup}
-      className="[&_.modalCloseButton]:top-5 [&_.modalCloseButton]:right-5 [&_.modalCloseButton]:fill-white bg-black border-4 border-yellow-600 rounded-lg"
+      className="[&_.modalCloseButton]:top-5 [&_.modalCloseButton]:right-5 [&_.modalCloseButton]:fill-white bg-black border-4 border-yellow-600 rounded-lg text-white"
     >
       <div className="flex flex-row items-center gap-20 h-[80vh] max-w-[80vw]">
         <div
