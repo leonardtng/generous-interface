@@ -1,10 +1,4 @@
-import React, {
-  Dispatch,
-  MutableRefObject,
-  ReactEventHandler,
-  useRef,
-  useState,
-} from "react";
+import React, { Dispatch, MutableRefObject, useRef, useState } from "react";
 import { LocationObject } from "@/types";
 import { ImageDisplay, ItemDisplay, Modal } from "@/components";
 
@@ -59,11 +53,11 @@ const TypeModal = ({
     <Modal
       isOpen={modalOpen.current}
       handleClose={closeGroup}
-      className="[&_.modalCloseButton]:top-5 [&_.modalCloseButton]:right-5 [&_.modalCloseButton]:fill-white"
+      className="[&_.modalCloseButton]:top-5 [&_.modalCloseButton]:right-5 [&_.modalCloseButton]:fill-white bg-black border-4 border-yellow-600 rounded-lg"
     >
       <div className="flex flex-row items-center gap-20 h-[80vh] max-w-[80vw]">
         <div
-          className={`h-[80vh] max-w-[80vw] bg-gray-700 p-5 rounded-xl overflow-hidden pt-20 flex flex-row ${
+          className={`h-[80vh] max-w-[80vw] bg-black bg-transparent-200 p-5 rounded-xl overflow-hidden pt-20 flex flex-row ${
             itemToDisplay ? "gap-20" : ""
           }`}
         >

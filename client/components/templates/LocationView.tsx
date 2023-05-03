@@ -57,25 +57,30 @@ const LocationView = () => {
       // If maxSize is undefined, just return the base size capped at maxImageSize.
       return Math.min(baseSize, maxImageSize);
     }
-  
+
     if (baseSize <= maxSize) {
       // If the base size is smaller than or equal to maxSize,
       // return the base size capped at maxImageSize.
       return Math.min(baseSize, maxImageSize);
     }
-  
+
     // Calculate the scaling factor based on the ratio of maxSize to baseSize.
     const scaleFactor = maxSize / baseSize;
-  
+
     // Scale the base size by the scaling factor and return the result capped at maxImageSize.
     return Math.min(baseSize * scaleFactor, maxImageSize);
   };
 
-  
-
   const getRandomObject = (items: LocationObject[]) => {
     const randomIndex = Math.floor(Math.random() * items.length);
     return items[randomIndex];
+  };
+
+  // Function to check if image url leads to a valid image
+  const doesImageExist = (image_url: string) => {
+    const image = new window.Image();
+    image.src = image_url;
+    return image.height !== 0;
   };
 
   const [groupToDisplay, setGroupToDisplay] = useState<string | null>(null);
@@ -88,6 +93,30 @@ const LocationView = () => {
     ssr: false,
   });
 
+  const Summary = dynamic(() => import("../molecules/Summary"), {
+    ssr: false,
+  });
+
+  const DescriptionDiv = dynamic(() => import("../molecules/DescriptionDiv"), {
+    ssr: false,
+  });
+
+  const location_obj = LOCATIONS.find(
+    (keyLocation: Location) => keyLocation.key === location
+  );
+
+  const location_name = location_obj?.name;
+
+  const Modal = dynamic(() => import("../molecules/Modal"), {
+    ssr: false,
+  });
+
+  const [showDesc, setShowDesc] = useState(false);
+
+  const showDescription = () => {
+    setShowDesc(true);
+  };
+
   return (
     <div className="w-[97%] min-h-screen flex flex-col justify-center items-center z-10 border-black">
       <div className="flex flex-col justify-center items-center mt-10 mb-10 bg-yellow-500/75 rounded-lg text-black border-black border-4">
@@ -95,26 +124,26 @@ const LocationView = () => {
           <div className="px-5">
             <div className="bg-slate-400 min-w-[600px] w-5/6 h-[80px] animate-pulse mt-5 rounded-xl" />
             <div className="text-2xl mt-4 pb-5 px-5">
-              <p>Location Description Placeholder</p>
+              <p>Loading...</p>
             </div>
           </div>
         ) : (
           <>
-            <div className="text-6xl tracking-widest pt-5 px-5">
-              {
-                LOCATIONS.find(
-                  (keyLocation: Location) => keyLocation.key === location
-                )?.name
-              }
-            </div>
-            <div className="text-2xl mt-4 pb-5 px-5">
-              <p>Location Description Placeholder</p>
+            <div className="flex flex-col justify-center items-center">
+              <h1 className="text-6xl pt-5 tracking-widest">{location_name}</h1>
+              <Summary name={location_name ? location_name : null} />
+              <button
+                className="text-2xl mb-3 border-4 border-black rounded-lg"
+                onClick={showDescription}
+              >
+                Learn More
+              </button>
             </div>
           </>
         )}
       </div>
 
-      <div className="flex flex-wrap h-[75vh] items-center justify-center gap-3 bg-yellow-500/40 z-20 border-black border-4 overflow-scroll w-full">
+      <div className="flex flex-wrap h-[75vh] items-center justify-center gap-3 bg-yellow-500/40 z-20 border-black border-4 overflow-scroll w-[80%]">
         {isLoading ? (
           <div className="w-full h-full flex flex-col justify-center items-center">
             Loading...
@@ -122,7 +151,7 @@ const LocationView = () => {
         ) : data ? (
           Object.entries(groupByType(data)).map(([type, items]) => {
             const size = calculateSize(items.length);
-            const object = getRandomObject(items);
+            let object = items[0];
             return (
               <div
                 key={type}
@@ -156,6 +185,23 @@ const LocationView = () => {
         scrollPos={scrollPos}
         setScrollPos={setScrollPos}
       />
+      <Modal
+        isOpen={showDesc}
+        handleClose={() => setShowDesc(false)}
+        className="[&_.modalCloseButton]:top-5 [&_.modalCloseButton]:right-5 [&_.modalCloseButton]:fill-white"
+      >
+        <div className="flex flex-row items-center h-[80vh] max-w-[80vw]">
+          <div
+            className={`max-h-[80vh] max-w-[60vw] p-5 rounded-xl flex flex-col justify-center items-center ${
+              location_name ? "gap-5" : ""
+            }`}
+          >
+            <div className="overflow-y-scroll px-5 py-2 border-gray border-2 rounded">
+              <DescriptionDiv location={location_name ? location_name : ""} />
+            </div>
+          </div>
+        </div>
+      </Modal>
     </div>
   );
 };

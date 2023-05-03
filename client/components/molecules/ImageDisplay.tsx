@@ -21,11 +21,11 @@ const ImageDisplay = ({
   return (
     <div
       id="modalScroller"
-      className="border-4 border-gray-400 overflow-scroll p-5 h-full"
+      className="border-4 border-yellow-600 overflow-scroll p-5 h-full flex flex-col items-center"
       onLoad={setScroll}
       onScroll={updateScroll}
     >
-      <h2 className="text-3xl pb-5">{startCase(groupToDisplay!)}</h2>
+      <h2 className="text-4xl pb-5">{startCase(groupToDisplay!)}</h2>
       <div className="flex-1 grid grid-cols-3 gap-5">
         {data
           ?.filter(
