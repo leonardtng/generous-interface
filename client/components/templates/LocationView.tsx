@@ -133,7 +133,7 @@ const LocationView = () => {
               <h1 className="text-6xl pt-5 tracking-widest">{location_name}</h1>
               <Summary name={location_name ? location_name : null} />
               <button
-                className="text-2xl mb-3 border-4 border-black rounded-lg"
+                className="text-2xl mb-3 border-4 border-black rounded-lg p-2"
                 onClick={showDescription}
               >
                 Learn More

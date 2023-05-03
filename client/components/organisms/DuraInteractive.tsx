@@ -40,7 +40,9 @@ const DuraInteractive = () => {
             <Marker key={location.key} position={location.latlong}>
               <Popup>
                 <div className="flex flex-col items-center gap-3 w-[120px]">
-                  <div className="font-primaryBold">{location.name}</div>
+                  <div className="font-primaryBold text-center">
+                    {location.name}
+                  </div>
                   <div>
                     <Image
                       src={location.image}
