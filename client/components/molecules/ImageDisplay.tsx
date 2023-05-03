@@ -32,19 +32,14 @@ const ImageDisplay = ({
             (artObject: LocationObject) => artObject.type === groupToDisplay
           )
           .map((item: LocationObject, index: number) => (
-            <a key={index} href="">
+            <a className="group overflow-clip scale-100" key={index} href="">
               <Image
                 key={index}
                 src={item.imageLink}
+                className="transition duration-500 group-hover:scale-110"
                 width={150}
                 height={150}
                 alt={item.name}
-                onMouseEnter={(e) => {
-                  (e.target as Element).classList.add("scale-125");
-                }}
-                onMouseLeave={(e) => {
-                  (e.target as Element).classList.remove("scale-125");
-                }}
                 onClick={(e) => {
                   e.preventDefault();
                   changeItem(item);
