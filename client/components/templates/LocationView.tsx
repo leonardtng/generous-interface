@@ -162,7 +162,7 @@ const LocationView = () => {
                 }}
                 onClick={() => openGroup(type)}
               >
-                <h2 className="text-sm font-bold bg-black w-fit px-1 z-20">
+                <h2 className="text-sm font-bold bg-black text-white w-fit px-1 z-20">
                   {type.toUpperCase()} - ({items.length})
                 </h2>
                 <Image
@@ -190,12 +190,13 @@ const LocationView = () => {
         handleClose={() => setShowDesc(false)}
         className="[&_.modalCloseButton]:top-5 [&_.modalCloseButton]:right-5 [&_.modalCloseButton]:fill-white"
       >
-        <div className="flex flex-row items-center h-[80vh] max-w-[80vw]">
+        <div className="flex flex-row items-center h-[80vh] max-w-[80vw] bg-black border-4 border-yellow-600 rounded-lg">
           <div
             className={`max-h-[80vh] max-w-[60vw] p-5 rounded-xl flex flex-col justify-center items-center ${
               location_name ? "gap-5" : ""
             }`}
           >
+            <h1 className="text-4xl">{location_name}</h1>
             <div className="overflow-y-scroll px-5 py-2 border-gray border-2 rounded">
               <DescriptionDiv location={location_name ? location_name : ""} />
             </div>

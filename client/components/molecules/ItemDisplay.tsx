@@ -11,7 +11,7 @@ const ItemDisplay = ({ itemToDisplay, closeItem }: Props) => {
     <div>
       {itemToDisplay && (
         <div className="max-w-[40vw] h= bg-black p-5 overflow-scroll flex flex-col border-4 border-yellow-600 h-full">
-          <h2 className="text-3xl pb-5 max-w-[40vw]">{itemToDisplay.name}</h2>
+          <h2 className="text-3xl text-white pb-5 max-w-[40vw]">{itemToDisplay.name}</h2>
           <div className="flex-1 grid grid-cols-2 gap-5 overflow-auto">
             <Image
               src={itemToDisplay.imageLink}
