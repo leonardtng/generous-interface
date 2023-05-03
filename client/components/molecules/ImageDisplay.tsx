@@ -25,7 +25,7 @@ const ImageDisplay = ({
       onLoad={setScroll}
       onScroll={updateScroll}
     >
-      <h2 className="text-4xl pb-5">{startCase(groupToDisplay!)}</h2>
+      <h2 className="text-4xl pb-5 text-white">{startCase(groupToDisplay!)}</h2>
       <div className="flex-1 grid grid-cols-3 gap-5">
         {data
           ?.filter(
