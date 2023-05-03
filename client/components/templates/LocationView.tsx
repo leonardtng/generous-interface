@@ -143,7 +143,7 @@ const LocationView = () => {
         )}
       </div>
 
-      <div className="flex flex-wrap flex-1 mb-6 items-center justify-center gap-3 bg-yellow-500/40 z-20 border-black border-4 overflow-scroll w-[80%]">
+      <div className="flex flex-wrap flex-1 min-h-[60vh] mb-6 items-center justify-center gap-3 bg-yellow-500/40 z-20 border-black border-4 overflow-scroll w-[80%]">
         {isLoading ? (
           <div className="w-full h-full flex flex-col justify-center items-center">
             Loading...
