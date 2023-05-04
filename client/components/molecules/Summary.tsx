@@ -30,8 +30,8 @@ const Summary = ({ name }: Props) => {
     return <div></div>;
   }
   return (
-    <div className="text-2xl p-5">
-      <h4>Summary: {summaries.get(name)}</h4>
+    <div className="text-xl p-5">
+      <p>{summaries.get(name)}</p>
     </div>
   );
 };

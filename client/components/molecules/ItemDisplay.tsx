@@ -10,8 +10,10 @@ const ItemDisplay = ({ itemToDisplay, closeItem }: Props) => {
   return (
     <div>
       {itemToDisplay && (
-        <div className="max-w-[40vw] h= bg-black p-5 overflow-scroll flex flex-col border-4 border-yellow-600 h-full">
-          <h2 className="text-3xl text-white pb-5 max-w-[40vw]">{itemToDisplay.name}</h2>
+        <div className="max-w-[40vw] bg-black p-5 overflow-y-scroll flex flex-col border-4 border-yellow-600 h-full">
+          <h2 className="text-3xl text-white pb-5 max-w-[40vw]">
+            {itemToDisplay.name}
+          </h2>
           <div className="flex-1 grid grid-cols-2 gap-5 overflow-auto">
             <Image
               src={itemToDisplay.imageLink}
@@ -23,37 +25,47 @@ const ItemDisplay = ({ itemToDisplay, closeItem }: Props) => {
               {itemToDisplay.type && (
                 <div className="flex align-center flex-col border-white border-b-2">
                   <span className="font-bold">Type:</span>
-                  <span>{itemToDisplay.type}</span>
+                  <span className="w-[100%] break-words">
+                    {itemToDisplay.type}
+                  </span>
                 </div>
               )}
               {itemToDisplay.locationName && (
                 <div className="flex flex-col border-white border-b-2">
                   <span className="font-bold">Location Found:</span>
-                  <span>{itemToDisplay.locationName}</span>
+                  <span className="w-[100%] break-words">
+                    {itemToDisplay.locationName}
+                  </span>
                 </div>
               )}
               {itemToDisplay.accession && (
                 <div className="flex flex-col border-white border-b-2">
                   <span className="font-bold">YUAG Accession Number:</span>
-                  <span>{itemToDisplay.accession}</span>
+                  <span className="w-[100%] break-words">
+                    {itemToDisplay.accession}
+                  </span>
                 </div>
               )}
               {itemToDisplay.negativeNumber && (
                 <div className="flex flex-col border-white border-b-2">
                   <span className="font-bold">YUAG Negative Number:</span>
-                  <span>{itemToDisplay.negativeNumber}</span>
+                  <span className="w-[100%] break-words">
+                    {itemToDisplay.negativeNumber}
+                  </span>
                 </div>
               )}
               {itemToDisplay.imageType && (
                 <div className="flex flex-col border-white border-b-2">
                   <span className="font-bold">Image Type:</span>
-                  <span>{itemToDisplay.imageType}</span>
+                  <span className="w-[100%] break-words">
+                    {itemToDisplay.imageType}
+                  </span>
                 </div>
               )}
               {itemToDisplay.link && (
                 <div className="flex flex-col border-white border-b-2">
                   <span className="font-bold">ARTSTOR Link:</span>
-                  <span>
+                  <span className="w-[100%] break-words">
                     <a href={itemToDisplay.link} target="_blank">
                       {itemToDisplay.link}
                     </a>

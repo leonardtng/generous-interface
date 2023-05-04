@@ -119,7 +119,10 @@ const LocationView = () => {
 
   return (
     <div className="w-[97%] h-screen flex flex-col justify-center items-center z-10 border-black">
-      <div className="flex flex-col justify-center items-center mt-10 mb-10 bg-yellow-500/75 rounded-lg text-black border-black border-4">
+      <div className="fixed top-0 left-0 m-4">
+        <button className="px-3 py-2 border-2 border-black bg-yellow-500 rounded-md hover:bg-black hover:text-white transition duration-100" onClick={() => router.push("/")}>Back</button>
+      </div>
+      <div className="flex flex-col justify-center items-center mt-10 mb-10 bg-yellow-500/75 rounded-lg text-black max-w-[80%] border-black border-4">
         {isLoading ? (
           <div className="px-5">
             <div className="bg-slate-400 min-w-[600px] w-5/6 h-[80px] animate-pulse mt-5 rounded-xl" />
@@ -133,7 +136,7 @@ const LocationView = () => {
               <h1 className="text-6xl pt-5 tracking-widest">{location_name}</h1>
               <Summary name={location_name ? location_name : null} />
               <button
-                className="text-2xl mb-3 border-4 border-black rounded-lg p-2"
+                className="text-lg mb-3 border-2 border-black rounded-lg p-2 hover:bg-black hover:text-white transition duration-100"
                 onClick={showDescription}
               >
                 Learn More
@@ -143,7 +146,7 @@ const LocationView = () => {
         )}
       </div>
 
-      <div className="flex flex-wrap flex-1 min-h-[60vh] mb-6 items-center justify-center gap-3 bg-yellow-500/40 z-20 border-black border-4 overflow-scroll w-[80%]">
+      <div className="flex flex-wrap flex-1 min-h-[60vh] mb-6 items-center justify-center gap-3 bg-yellow-500/80 z-20 border-black border-4 overflow-y-scroll w-[80%]">
         {isLoading ? (
           <div className="w-full h-full flex flex-col justify-center items-center">
             Loading...
@@ -188,9 +191,9 @@ const LocationView = () => {
       <Modal
         isOpen={showDesc}
         handleClose={() => setShowDesc(false)}
-        className="[&_.modalCloseButton]:top-5 [&_.modalCloseButton]:right-5 [&_.modalCloseButton]:fill-white"
+        className="[&_.modalCloseButton]:top-5 [&_.modalCloseButton]:right-5 [&_.modalCloseButton]:fill-white bg-black border-4 border-yellow-600"
       >
-        <div className="flex flex-row items-center h-[80vh] max-w-[80vw] bg-black border-4 border-yellow-600 rounded-lg">
+        <div className="flex flex-row items-center h-[80vh] max-w-[80vw] bg-black rounded-lg">
           <div
             className={`max-h-[80vh] max-w-[60vw] p-5 rounded-xl flex flex-col justify-center items-center ${
               location_name ? "gap-5" : ""

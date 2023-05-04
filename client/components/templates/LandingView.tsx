@@ -18,7 +18,7 @@ const LandingView = () => {
   );
 
   return (
-    <div className="bg-yellow-500/75 rounded-xl">
+    <div className="bg-yellow-500/75 rounded-xl border-4 border-black">
       <div className="flex flex-col gap-6 items-center p-10">
         <div
           className={`font-primaryBold mt-5 text-6xl text-black tracking-widest`}
@@ -26,6 +26,7 @@ const LandingView = () => {
           Generous Interface
         </div>
         <div className={`text-3xl tracking-wide text-black`}>Dura-Europos</div>
+        <div className="text-xl text-black">Click on a marker below to start exploring!</div>
         <div className="border-4 border-yellow-200 rounded-md">
           <DuraInteractive />
         </div>

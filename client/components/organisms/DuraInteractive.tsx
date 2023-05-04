@@ -40,7 +40,7 @@ const DuraInteractive = () => {
             <Marker key={location.key} position={location.latlong}>
               <Popup>
                 <div className="flex flex-col items-center gap-3 w-[120px]">
-                  <div className="font-primaryBold text-center">
+                  <div className="font-primaryBold text-lg text-center">
                     {location.name}
                   </div>
                   <div>
@@ -54,7 +54,7 @@ const DuraInteractive = () => {
                   <motion.button
                     whileTap={{ scale: 0.9 }}
                     transition={{ duration: 0.2 }}
-                    className="bg-primary p-3 text-white rounded-lg"
+                    className="bg-yellow-400 px-3 py-1 text-black border-2 border-black rounded-lg hover:bg-black hover:text-white transition duration-100"
                     onClick={() => router.push(`/${location.key}`)}
                   >
                     View Images

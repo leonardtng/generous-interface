@@ -21,7 +21,7 @@ const ImageDisplay = ({
   return (
     <div
       id="modalScroller"
-      className="border-4 border-yellow-600 overflow-scroll p-5 h-full flex flex-col items-center"
+      className="border-4 border-yellow-600 overflow-y-scroll p-5 h-full flex flex-col items-center"
       onLoad={setScroll}
       onScroll={updateScroll}
     >
